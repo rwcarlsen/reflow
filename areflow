@@ -1,0 +1,21 @@
+$!/bin/bash
+
+tmp=/tmp/acmereflow.tmp
+
+w() {
+        9p write acme/$winid/$1
+}
+r() {
+        9p read acme/$winid/$1
+}
+ctl() {
+        echo -n "$@" | w ctl
+}
+
+ctl addr=dot
+r data | reflow $1 > $tmp
+
+ctl addr=dot
+cat $tmp | w data
+
+rm -f $tmp
