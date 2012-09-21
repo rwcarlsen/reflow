@@ -28,12 +28,6 @@ func main() {
   }
   text := string(data)
 
-  // stop at first line break
-  end := strings.Index(text, "\n\n")
-  if end >=0 {
-    text = text[:end]
-  }
-
   // split text into words
   text = strings.Replace(text, "\n", " ", -1)
 
@@ -57,7 +51,7 @@ func main() {
     if chars - tailLen > max {
       line := strings.Join(words[start:i], "")
       lines = append(lines, strings.Trim(line, " \t"))
-      chars, start = 0, i
+      chars, start = len(w), i
     }
   }
   line := strings.Join(words[start:], "")
