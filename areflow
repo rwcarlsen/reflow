@@ -1,21 +1,17 @@
 $!/bin/bash
 
 tmp=/tmp/acmereflow.tmp
+ns=$HOME/acme/
 
-w() {
-        9p write acme/$winid/$1
-}
 r() {
-        9p read acme/$winid/$1
+        cat $ns/$winid/$1
 }
 ctl() {
-        echo -n "$@" | w ctl
+        echo -n "$@" | $ns/$winid/ctl
 }
 
-ctl addr=dot
-r data | reflow $1 > $tmp
+r rdsel | reflow $1 > $tmp
 
-ctl addr=dot
-cat $tmp | w data
+cat $tmp >> $ns/$winid/wrsel
 
 rm -f $tmp
