@@ -1,0 +1,6 @@
+$!/bin/bash
+ns=/tmp/acme
+cat $ns/$winid/rdsel | sed 's/^\t//g' >> /tmp/poo.txt
+cat /tmp/poo.txt >> $ns/$winid/wrsel
+rm -f /tmp/poo.txt
+

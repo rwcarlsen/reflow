@@ -1,13 +1,10 @@
 $!/bin/bash
 
 tmp=/tmp/acmereflow.tmp
-ns=$HOME/acme/
+ns=/tmp/acme/
 
 r() {
         cat $ns/$winid/$1
-}
-ctl() {
-        echo -n "$@" | $ns/$winid/ctl
 }
 
 r rdsel | reflow $1 > $tmp
