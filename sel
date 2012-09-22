@@ -1,0 +1,3 @@
+#!/bin/bash
+ns=/tmp/acme
+cat $ns/$winid/rdsel
